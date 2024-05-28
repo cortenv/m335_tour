@@ -5,7 +5,9 @@
       <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
         <span class="badge">{{hero.id}}</span>
         <span class="name">{{hero.name}}</span>
-        <span>{{hero.superpower}}</span>
+        @if(hero.superpower!) {
+          💥
+        }
       </button>
     </li>
   }
@@ -18,7 +20,6 @@
     <div>
       <label for="hero-name">Hero name: </label>
       <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
-      <input id="hero-superpower" [(ngModel)]="selectedHero.superpower" placeholder="superpower">
     </div>
   </div>
 }
