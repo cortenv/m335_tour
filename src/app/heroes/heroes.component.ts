@@ -6,28 +6,21 @@ import { FormsModule } from '@angular/forms';
 import {HeroDetailComponent} from "../hero-detail/hero-detail.component";
 import {MessageService} from "../message.service";
 import {Observable} from "rxjs";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-heroes',
   standalone: true,
-  imports: [UpperCasePipe, FormsModule, HeroDetailComponent],
+  imports: [UpperCasePipe, FormsModule, HeroDetailComponent, RouterLink],
   templateUrl: './heroes.component.html',
   styleUrl: './heroes.component.scss',
 })
 export class HeroesComponent {
-  heroes: Hero[] = [];
-  selectedHero?: Hero;
-
   private heroService = inject(HeroService);
-  private messageService = inject(MessageService);
+  heroes: Hero[] = [];
 
   ngOnInit(): void {
     this.getHeroes();
-  }
-
-  onSelect(hero: Hero) : void {
-    this.selectedHero = hero;
-    this.messageService.add(`HeroesComponent: Selected hero id=${hero.id}`);
   }
 
   getHeroes(): void {
@@ -35,5 +28,4 @@ export class HeroesComponent {
       .subscribe(heroes => this.heroes = heroes);
   }
 
-  heroes$: Observable<Hero[]> = this.heroService.getHeroes();
 }

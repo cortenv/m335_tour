@@ -1,16 +1,14 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
-  @for (hero of heroes; track hero.id) {
+  @for (hero of heroes; track hero.id; let i = $index) {
     <li>
-      <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
-        <span class="badge">{{hero.id}}</span>
+      <a routerLink="/detail/{{hero.id}}">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
         <span class="name">{{hero.name}}</span>
         @if(hero.superpower!) {
           💥
         }
-      </button>
+      </a>
     </li>
   }
 </ul>
-
-<app-hero-detail [hero]="selectedHero" />

@@ -1,5 +1,9 @@
 <b>Hello World</b>
 
 <div (click)="(hi())">{{ title }}</div>
-<app-heroes></app-heroes>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/heroes">Heroes</a>
+</nav>
+<router-outlet></router-outlet>
 <app-messages />
