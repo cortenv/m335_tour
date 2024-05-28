@@ -12,11 +12,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './heroes.component.scss',
 })
 export class HeroesComponent {
-  hero: Hero = {
-    id: 1,
-    name: 'Windstorm',
-    superpower: 'flight',
-  };
-
   heroes = HEROES;
+  selectedHero?: Hero;
+
+  onSelect(hero: Hero) : void {
+    this.selectedHero = hero;
+  }
 }
