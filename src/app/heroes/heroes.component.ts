@@ -5,6 +5,7 @@ import { UpperCasePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {HeroDetailComponent} from "../hero-detail/hero-detail.component";
 import {MessageService} from "../message.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-heroes',
@@ -33,4 +34,6 @@ export class HeroesComponent {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
   }
+
+  heroes$: Observable<Hero[]> = this.heroService.getHeroes();
 }
